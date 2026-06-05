@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Hub de Auditorias — Hidrogest</title>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Nunito:wght@700;800&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     
@@ -139,9 +139,16 @@
     }
     .header-inner { max-width: 1280px; margin: 0 auto; padding: 0 2rem; height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; }
     .header-brand { display: flex; align-items: center; gap: 1rem; }
+    
+    /* Regras para os logos alternarem automaticamente */
     .brand-logo { height: 40px; }
-    .brand-title { font-family: 'DM Serif Display', serif; font-size: 1.25rem; color: var(--brand-title); transition: color 0.3s; }
-    .brand-sub { font-size: .72rem; font-weight: 500; color: var(--text-muted); text-transform: uppercase; letter-spacing: .08em; }
+    .logo-dark { display: none; }
+    [data-theme="dark"] .logo-light { display: none; }
+    [data-theme="dark"] .logo-dark { display: block; }
+    
+    /* Fonte do título atualizada para Nunito (mais arredondada) */
+    .brand-title { font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 1.25rem; color: var(--brand-title); transition: color 0.3s; }
+    .brand-sub { font-size: .72rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: .08em; }
     
     .header-actions { display: flex; align-items: center; gap: 1.5rem; }
     .header-stats { display: flex; gap: 1.5rem; background: var(--bg-base); border: 1px solid var(--border-subtle); border-radius: 14px; padding: .6rem 1.2rem; transition: background-color 0.3s, border-color 0.3s; }
@@ -216,7 +223,7 @@
     .progress-fill.low { background: var(--score-low); }
     
     .card-cta { display: flex; align-items: center; justify-content: center; gap: .4rem; background: var(--navy-btn); color: #fff; border-radius: 10px; padding: .75rem; font-size: .82rem; font-weight: 600; text-decoration: none; transition: .2s; }
-    [data-theme="dark"] .card-cta { color: var(--bg-base); } /* Texto escuro no botão claro no modo escuro */
+    [data-theme="dark"] .card-cta { color: var(--bg-base); }
     .card-cta:not(.disabled):hover { background: var(--navy-btn-hover); transform: translateY(-1px); }
     .card-cta.disabled { background: var(--border-subtle); color: var(--text-muted); cursor: not-allowed; }
     
@@ -227,7 +234,8 @@
   <header>
     <div class="header-inner">
       <div class="header-brand">
-        <img class="brand-logo" src="https://drive.google.com/thumbnail?id=1aWt-ZBZIvBdviJ3hoYVExMUoQlFEt15O&sz=w200" alt="Hidrogest">
+        <img class="brand-logo logo-light" src="https://drive.google.com/thumbnail?id=1X5-RC14ZWY1Unn4bxS8ZPPoUxbf1ZRH_&sz=w400" alt="Hidrogest">
+        <img class="brand-logo logo-dark" src="https://drive.google.com/thumbnail?id=1oi5x7yT3490ti7VgX4T4HDBtU6A31pnV&sz=w400" alt="Hidrogest">
         <div><div class="brand-title">Hub de Auditorias</div><div class="brand-sub">Otimização de Perfis</div></div>
       </div>
       <div class="header-actions">
