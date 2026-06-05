@@ -144,11 +144,9 @@
       animation: slideDown 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
     
-    /* Altura do header ajustada para a logo maior */
     .header-inner { max-width: 1280px; margin: 0 auto; padding: 0.5rem 2rem; min-height: 90px; display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; }
     .header-brand { display: flex; align-items: center; gap: 1rem; }
     
-    /* Tamanho da logo aumentado para 75px e animada no hover */
     .brand-logo { 
         height: 75px; 
         transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
@@ -161,7 +159,6 @@
     [data-theme="dark"] .logo-light { display: none; }
     [data-theme="dark"] .logo-dark { display: block; }
     
-    /* Fonte do título */
     .brand-title { font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 1.35rem; color: var(--brand-title); transition: color 0.3s; }
     .brand-sub { font-size: .75rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: .08em; }
     
@@ -191,6 +188,27 @@
     .theme-toggle:hover { background: var(--brand-primary); color: white; border-color: var(--brand-primary); transform: scale(1.1) rotate(15deg); }
 
     main { max-width: 1280px; margin: 0 auto; padding: 2.5rem 2rem 4rem; }
+
+    /* NOVO: Estilos do Banner de Informação */
+    .info-banner {
+      background: var(--badge-blue-bg);
+      border: 1px solid var(--badge-blue-border);
+      border-radius: 16px;
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 2rem;
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+      color: var(--text-base);
+      font-size: 0.95rem;
+      line-height: 1.5;
+      animation: fadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+    .info-banner strong { color: var(--brand-primary); }
+    .info-banner .highlight-text { color: var(--text-strong); font-weight: 700; }
+    .info-icon { color: var(--brand-primary); flex-shrink: 0; margin-top: 2px; }
+    [data-theme="dark"] .info-banner { color: var(--text-strong); }
+
     .toolbar { display: flex; gap: 1rem; margin-bottom: 2rem; background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: 16px; padding: .9rem 1.2rem; transition: background-color 0.3s, border-color 0.3s; }
     .search-wrap { position: relative; flex: 1; }
     .search-icon { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: var(--text-muted); transition: color 0.3s; }
@@ -202,7 +220,6 @@
     /* Cards */
     .card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem; }
     
-    /* Animação do Card Mais Animada */
     .card { background: var(--bg-card); border: 1px solid var(--border-card); border-radius: 20px; padding: 1.5rem; display: flex; flex-direction: column; gap: 1.25rem; animation: fadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards; transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease, border-color 0.3s; opacity: 0; }
     .card:hover { transform: translateY(-8px) scale(1.02); box-shadow: var(--shadow-hover); border-color: var(--brand-primary); z-index: 10; }
     
@@ -279,6 +296,17 @@
   </header>
 
   <main>
+    <div class="info-banner">
+      <svg class="info-icon" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="10"/>
+        <line x1="12" y1="16" x2="12" y2="12"/>
+        <line x1="12" y1="8" x2="12.01" y2="8"/>
+      </svg>
+      <div>
+        <strong>Sobre a tag "Não Verificada":</strong> Ela refere-se exclusivamente ao selo oficial de <span class="highlight-text">Identidade Verificada do LinkedIn</span>. Isso indica apenas que o usuário ainda não realizou o processo voluntário de validação de identidade (geralmente enviando um documento via Persona) na plataforma. Não significa que o perfil seja inválido ou falso.
+      </div>
+    </div>
+
     <div class="toolbar">
       <div class="search-wrap">
         <svg class="search-icon" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
