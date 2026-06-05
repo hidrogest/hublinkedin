@@ -60,34 +60,34 @@
       --glow-2: rgba(0, 180, 170, 0.07);
     }
 
-    /* Modo Escuro */
+    /* Modo Escuro - Padrão LinkedIn */
     [data-theme="dark"] {
-      --brand-title: #f8fafc;
-      --brand-primary: #38bdf8;
-      --brand-hover: #7dd3fc;
-      --navy-btn: #38bdf8;
-      --navy-btn-hover: #0284c7;
+      --brand-title: #e9eaec;
+      --brand-primary: #70b5f9;
+      --brand-hover: #a6d4fa;
+      --navy-btn: #70b5f9;
+      --navy-btn-hover: #8ac4fa;
       
       /* Superfícies e Fundos */
-      --bg-base: #0f172a;
-      --bg-card: #1e293b;
-      --bg-header: rgba(15, 23, 42, 0.85);
-      --border-subtle: #334155;
-      --border-card: #334155;
+      --bg-base: #000000;
+      --bg-card: #1d2226;
+      --bg-header: rgba(29, 34, 38, 0.85);
+      --border-subtle: #38434f;
+      --border-card: #38434f;
       
       /* Textos */
-      --text-strong: #f8fafc;
-      --text-base: #cbd5e1;
-      --text-muted: #94a3b8;
+      --text-strong: #e9eaec;
+      --text-base: #c7d1d8;
+      --text-muted: #8f959e;
       
-      /* Badges e Status (Tons adaptados para leitura noturna) */
-      --badge-green-bg: rgba(16, 185, 129, 0.15);
-      --badge-green-text: #34d399;
-      --badge-green-border: rgba(52, 211, 153, 0.3);
+      /* Badges e Status */
+      --badge-green-bg: rgba(68, 154, 91, 0.15);
+      --badge-green-text: #449a5b;
+      --badge-green-border: rgba(68, 154, 91, 0.3);
       
-      --badge-blue-bg: rgba(56, 189, 248, 0.15);
-      --badge-blue-text: #7dd3fc;
-      --badge-blue-border: rgba(125, 211, 252, 0.3);
+      --badge-blue-bg: rgba(112, 181, 249, 0.15);
+      --badge-blue-text: #70b5f9;
+      --badge-blue-border: rgba(112, 181, 249, 0.3);
       
       --badge-orange-bg: rgba(245, 158, 11, 0.15);
       --badge-orange-text: #fbbf24;
@@ -97,19 +97,19 @@
       --badge-purple-text: #e879f9;
       --badge-purple-border: rgba(232, 121, 249, 0.3);
       
-      --badge-gray-bg: rgba(148, 163, 184, 0.1);
-      --badge-gray-text: #94a3b8;
-      --badge-gray-border: #334155;
+      --badge-gray-bg: rgba(143, 149, 158, 0.15);
+      --badge-gray-text: #8f959e;
+      --badge-gray-border: #38434f;
 
       /* Scores */
       --score-low: #fbbf24;
-      --score-mid: #38bdf8;
-      --score-high: #34d399;
+      --score-mid: #70b5f9;
+      --score-high: #449a5b;
 
       /* Efeitos */
-      --shadow-hover: 0 12px 32px rgba(0, 0, 0, 0.4);
-      --glow-1: rgba(56, 189, 248, 0.05);
-      --glow-2: rgba(52, 211, 153, 0.05);
+      --shadow-hover: 0 12px 32px rgba(0, 0, 0, 0.6);
+      --glow-1: rgba(112, 181, 249, 0.05);
+      --glow-2: rgba(68, 154, 91, 0.05);
     }
 
     /* Estilos Globais e Transições */
@@ -140,13 +140,13 @@
     .header-inner { max-width: 1280px; margin: 0 auto; padding: 0 2rem; height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; }
     .header-brand { display: flex; align-items: center; gap: 1rem; }
     
-    /* Regras para os logos alternarem automaticamente */
-    .brand-logo { height: 40px; }
+    /* Tamanho da logo aumentado de 40px para 50px */
+    .brand-logo { height: 50px; }
     .logo-dark { display: none; }
     [data-theme="dark"] .logo-light { display: none; }
     [data-theme="dark"] .logo-dark { display: block; }
     
-    /* Fonte do título atualizada para Nunito (mais arredondada) */
+    /* Fonte do título */
     .brand-title { font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 1.25rem; color: var(--brand-title); transition: color 0.3s; }
     .brand-sub { font-size: .72rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: .08em; }
     
