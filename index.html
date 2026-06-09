@@ -116,6 +116,17 @@
     @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
     @keyframes slideDown { from { transform: translateY(-100%); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
     @keyframes pulseSoft { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
+    
+    /* NOVAS ANIMAÇÕES: Botão Premium */
+    @keyframes premiumGlow {
+      0% { box-shadow: 0 4px 15px rgba(10, 102, 194, 0.4), 0 0 0 0 rgba(0, 210, 255, 0.2); }
+      50% { box-shadow: 0 6px 25px rgba(0, 180, 170, 0.6), 0 0 12px 4px rgba(10, 102, 194, 0.3); }
+      100% { box-shadow: 0 4px 15px rgba(10, 102, 194, 0.4), 0 0 0 0 rgba(0, 210, 255, 0.2); }
+    }
+    @keyframes shimmerEffect {
+      0% { transform: translateX(-150%) skewX(-25deg); }
+      100% { transform: translateX(150%) skewX(-25deg); }
+    }
 
     /* Estilos Globais e Transições */
     body { 
@@ -189,7 +200,7 @@
 
     main { max-width: 1280px; margin: 0 auto; padding: 2.5rem 2rem 4rem; }
 
-    /* NOVO: Estilos do Banner de Informação */
+    /* Banner de Informação */
     .info-banner {
       background: var(--badge-blue-bg);
       border: 1px solid var(--badge-blue-border);
@@ -269,6 +280,43 @@
     [data-theme="dark"] .card-cta { color: var(--bg-base); }
     .card-cta:not(.disabled):hover { background: var(--brand-primary); transform: translateY(-2px); box-shadow: 0 4px 12px var(--glow-1); }
     .card-cta.disabled { background: var(--border-subtle); color: var(--text-muted); cursor: not-allowed; }
+
+    /* NOVO: Estilo do Botão Premium Luminoso */
+    .premium-cta {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: .5rem;
+      background: linear-gradient(135deg, #00b4aa 0%, #0a66c2 50%, #0077b5 100%);
+      background-size: 200% auto;
+      color: #fff !important;
+      border-radius: 10px;
+      padding: .85rem;
+      font-size: .85rem;
+      font-weight: 700;
+      text-decoration: none;
+      overflow: hidden;
+      border: none;
+      box-shadow: 0 4px 15px rgba(10, 102, 194, 0.4);
+      animation: premiumGlow 3s infinite ease-in-out;
+      transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), background-position 0.5s ease;
+    }
+    .premium-cta::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+      transform: translateX(-150%) skewX(-25deg);
+      animation: shimmerEffect 3.5s infinite linear;
+    }
+    .premium-cta:hover {
+      transform: translateY(-3px) scale(1.02);
+      background-position: right center;
+    }
+    .premium-cta svg {
+      animation: pulseSoft 1.5s infinite ease-in-out;
+    }
     
     @media (max-width: 640px) { .header-stats { display: none; } main { padding: 1.5rem 1rem; } .brand-logo { height: 60px; } }
   </style>
@@ -341,13 +389,13 @@
       setTheme(newTheme);
     });
 
-    // Dados (Link do João atualizado para joaolinkedin)
+    // Dados ATUALIZADOS com os links diretos do LinkedIn para perfis editados
     const TEAM = [
-      { nome: "Antônio José Machado", cargo: "Sócio Diretor & Eng. Responsável", score: 100, verificado: false, recente: true, avatar: "https://drive.google.com/thumbnail?id=1-jBHy0UWqwNi5RAvII22ltyVMfxuj4Xn&sz=w400", url: "https://hidrogest.github.io/antoniolinkedin" },
+      { nome: "Antônio José Machado", cargo: "Sócio Diretor & Eng. Responsável", score: 100, verificado: false, recente: true, avatar: "https://drive.google.com/thumbnail?id=1-jBHy0UWqwNi5RAvII22ltyVMfxuj4Xn&sz=w400", url: "https://hidrogest.github.io/antoniolinkedin", linkedinUrl: "https://www.linkedin.com/in/antoniojosemachado/" },
       { nome: "Thiago Gurgel Machado", cargo: "Diretor de Operações", score: 30, verificado: false, recente: true, avatar: "https://drive.google.com/thumbnail?id=1ZFV4kqfKwUJL1cpiTpF8IdA5KO0wmkq2&sz=w400", url: "https://hidrogest.github.io/thiagolinkedin" },
-      { nome: "Anna Pâula do Vale", cargo: "Gerente de Engenharia", score: 90, verificado: true, recente: false, avatar: "https://drive.google.com/thumbnail?id=1PXOebax4hkwDSVls3bGbOI3Sm4epWtHz&sz=w400", url: "https://hidrogest.github.io/annalinkedin" },
-      { nome: "Rosângela Gurgel Machado", cargo: "Diretora Técnica em Engenharia", score: 100, verificado: false, recente: false, avatar: "https://drive.google.com/thumbnail?id=1KZ-A61W689c2rvUvocNZpEhaqxpsFZ4_&sz=w400", url: "https://hidrogest.github.io/rosangelalinkedin" },
-      { nome: "Michel Oliveira", cargo: "Coord. de Hidrometria e Topografia", score: 100, verificado: true, recente: false, avatar: "https://drive.google.com/thumbnail?id=1Fe4yCPfrkCqWWUERvMC4HGS3pY76JBwg&sz=w400", url: "https://hidrogest.github.io/michellinkedin" },
+      { nome: "Anna Pâula do Vale", cargo: "Gerente de Engenharia", score: 90, verificado: true, recente: false, avatar: "https://drive.google.com/thumbnail?id=1PXOebax4hkwDSVls3bGbOI3Sm4epWtHz&sz=w400", url: "https://hidrogest.github.io/annalinkedin", linkedinUrl: "https://www.linkedin.com/in/anna-p%C3%A2ula-do-vale-08b461328/" },
+      { nome: "Rosângela Gurgel Machado", cargo: "Diretora Técnica em Engenharia", score: 100, verificado: false, recente: false, avatar: "https://drive.google.com/thumbnail?id=1KZ-A61W689c2rvUvocNZpEhaqxpsFZ4_&sz=w400", url: "https://hidrogest.github.io/rosangelalinkedin", linkedinUrl: "https://www.linkedin.com/in/rosangelamoreiragurgel/" },
+      { nome: "Michel Oliveira", cargo: "Coord. de Hidrometria e Topografia", score: 100, verificado: true, recente: false, avatar: "https://drive.google.com/thumbnail?id=1Fe4yCPfrkCqWWUERvMC4HGS3pY76JBwg&sz=w400", url: "https://hidrogest.github.io/michellinkedin", linkedinUrl: "https://www.linkedin.com/in/micheloliveirahidro/" },
       { nome: "Mariane Rodrigues Silveira", cargo: "Gestão Adm. e Financeira", score: 30, verificado: true, recente: true, avatar: "https://drive.google.com/thumbnail?id=1To0II_tJNLy4F6bxqCrNOs_DodpEE0bk&sz=w400", url: "https://hidrogest.github.io/marianelinkedin" },
       { nome: "Leonardo Gurgel Machado", cargo: "Diretor Executivo", score: 95, verificado: true, recente: true, avatar: "https://drive.google.com/thumbnail?id=1S5nhIbBQXa7asM34lzmIf6bYBm5CiY25&sz=w800", url: "https://hidrogest.github.io/leonardolinkedin" },
       { nome: "Altamir Teixeira da Gama", cargo: "Técnico Hidrometrista Sênior", score: 100, verificado: false, recente: true, avatar: "https://drive.google.com/thumbnail?id=13eQo8nqMCL67PRPlAd7BcqchJVP-iLVd&sz=w800", url: "https://hidrogest.github.io/altamirlinkedin" },
@@ -402,6 +450,13 @@
         const label = m.score >= 90 ? 'Concluído' : m.score >= 50 ? 'Em andamento' : 'Iniciado';
         const fallback = `https://ui-avatars.com/api/?name=${encodeURIComponent(m.nome)}&size=200&background=0a66c2&color=fff&bold=true`;
 
+        // Renderiza o botão dinamicamente caso possua a propriedade linkedinUrl
+        const linkedinButton = m.linkedinUrl ? `
+          <a class="premium-cta" href="${m.linkedinUrl}" target="_blank">
+            Ver Perfil Otimizado ${SVG.sparkle}
+          </a>
+        ` : '';
+
         return `
           <div class="card" style="animation-delay:${i*60}ms">
             <div class="card-header">
@@ -418,6 +473,7 @@
               <div class="progress-meta"><span class="progress-label">Otimização</span>
               <div style="text-align:right"><div class="score-num ${tier}">${m.score}%</div><div class="score-status ${tier}">${label}</div></div></div>
               <div class="progress-track"><div class="progress-fill ${tier}" data-width="${m.score}" style="width:0%"></div></div>
+              ${linkedinButton}
               <a class="card-cta" href="${m.url}" target="_blank">Ver Relatório ${SVG.ext}</a>
             </div>
           </div>`;
