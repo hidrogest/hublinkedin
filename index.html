@@ -225,7 +225,7 @@
     
     .card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem; }
     
-    .card { background: var(--bg-card); border: 1px solid var(--border-card); border-radius: 20px; padding: 1.5rem; display: flex; flex-direction: column; gap: 1.25rem; animation: fadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards; transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease, border-color 0.3s; opacity: 0; }
+    .card { position: relative; background: var(--bg-card); border: 1px solid var(--border-card); border-radius: 20px; padding: 1.5rem; display: flex; flex-direction: column; gap: 1.25rem; animation: fadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards; transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease, border-color 0.3s; opacity: 0; overflow: hidden; }
     .card:hover { transform: translateY(-8px) scale(1.02); box-shadow: var(--shadow-hover); border-color: var(--brand-primary); z-index: 10; }
     
     .card-header { display: flex; justify-content: space-between; align-items: flex-start; }
@@ -311,6 +311,59 @@
       animation: pulseSoft 1.5s infinite ease-in-out;
     }
     
+    /* Escudo de Ex-Colaborador */
+    .ex-employee-shield {
+      position: absolute;
+      inset: 0;
+      background: rgba(255, 255, 255, 0.75);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      z-index: 20;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      text-align: center;
+      transition: opacity 0.4s ease, visibility 0.4s ease;
+    }
+    [data-theme="dark"] .ex-employee-shield {
+      background: rgba(29, 34, 38, 0.75);
+    }
+    .shield-icon-svg {
+      color: var(--score-low);
+      margin-bottom: 0.75rem;
+      width: 42px; height: 42px;
+      animation: pulseSoft 2s infinite;
+    }
+    .shield-title {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--text-strong);
+      margin-bottom: 0.25rem;
+    }
+    .shield-text {
+      font-size: 0.85rem;
+      line-height: 1.4;
+      color: var(--text-muted);
+      margin-bottom: 1.25rem;
+    }
+    .shield-btn {
+      background: transparent;
+      color: var(--text-strong);
+      border: 1px solid var(--border-subtle);
+      border-radius: 8px;
+      padding: 0.5rem 1rem;
+      font-size: 0.8rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    .shield-btn:hover {
+      background: var(--bg-base);
+      border-color: var(--text-strong);
+    }
+
     @media (max-width: 640px) { .header-stats { display: none; } main { padding: 1.5rem 1rem; } .brand-logo { height: 60px; } }
   </style>
 </head>
@@ -392,15 +445,16 @@
       { nome: "Altamir Teixeira da Gama", cargo: "Técnico Hidrometrista Sênior", score: 42, verificado: false, recente: true, dataRelatorio: "05/06/2026", avatar: "https://drive.google.com/thumbnail?id=13eQo8nqMCL67PRPlAd7BcqchJVP-iLVd&sz=w800", url: "https://hidrogest.github.io/altamirlinkedin" },
       { nome: "Dieyme Junior Dornas de Amorim", cargo: "Técnico Hidrometrista & Marinheiro Fluvial", score: 55, verificado: false, recente: true, dataRelatorio: "01/06/2026", avatar: "https://drive.google.com/thumbnail?id=1joo7Z6vBMKFMYzYySR9gGl6BXKYCEKRO&sz=w800", url: "https://hidrogest.github.io/dieymelinkedin" },
       { nome: "Glayson Alves de Jesus", cargo: "Analista Financeiro e de Qualidade Sênior", score: 38, verificado: false, recente: true, dataRelatorio: "03/06/2026", avatar: "https://drive.google.com/thumbnail?id=1R9iGTL_wu-NiDj1LmrFLZyE-zHqAB8dg&sz=w800", url: "https://hidrogest.github.io/glaysonlinkedin" },
-      { nome: "Guilherme Moura Costa Gomes", cargo: "Técnico Hidrometrista Pleno", score: 47, verificado: false, recente: true, dataRelatorio: "05/06/2026", avatar: "https://drive.google.com/thumbnail?id=1MXqmEpY_Da2xxosAn5wNPPxYEyxIUKiB&sz=w800", url: "https://hidrogest.github.io/guilhermelinkedin" },
+      { nome: "Guilherme Moura Costa Gomes", cargo: "Técnico Hidrometrista Pleno", score: 47, verificado: false, ex_colaborador: true, recente: true, dataRelatorio: "05/06/2026", avatar: "https://drive.google.com/thumbnail?id=1MXqmEpY_Da2xxosAn5wNPPxYEyxIUKiB&sz=w800", url: "https://hidrogest.github.io/guilhermelinkedin" },
       { nome: "João Pedro Nascimento de Sousa", cargo: "Técnico Ambiental", score: 33, verificado: false, recente: true, dataRelatorio: "05/06/2026", avatar: "https://drive.google.com/thumbnail?id=1214VTK6PnbfHN6djgbhLxj9dLEksTHQo&sz=w800", url: "https://hidrogest.github.io/joaolinkedin" },
       { nome: "Douglas Maxiliano Rosa de Oliveira", cargo: "Técnico Hidrometrista Júnior", score: 100, verificado: false, recente: true, dataRelatorio: "08/06/2026", avatar: "https://ui-avatars.com/api/?name=Douglas+Maxiliano&size=400&background=0a66c2&color=fff", url: "https://hidrogest.github.io/douglaslinkedin" },
       { nome: "Rafael Pereira dos Santos", cargo: "Técnico em Meio Ambiente | Técnico Hidrometrista Júnior", score: 51, verificado: false, recente: true, dataRelatorio: "08/06/2026", avatar: "https://drive.google.com/thumbnail?id=1c2_20EH6Hvx86wPhK1Ym5LXPbUH2WOLu&sz=w800", url: "https://hidrogest.github.io/rafaellinkedin" },
       { nome: "Alvimar Alves dos Santos", cargo: "Engenheiro Ambiental | Analista Ambiental", score: 45, verificado: false, recente: true, dataRelatorio: "05/06/2026", avatar: "https://drive.google.com/thumbnail?id=1aQTTGGcBFWT9fLmK5_AIytrklAKQBTKR&sz=w800", url: "https://hidrogest.github.io/alvimarlinkedin" },
       { nome: "Valdeir Resende Pires", cargo: "Técnico Hidrometrista Pleno", score: 80, verificado: false, recente: true, dataRelatorio: "05/06/2026", avatar: "https://ui-avatars.com/api/?name=Valdeir+Resende&size=200&background=0a66c2&color=fff", url: "https://hidrogest.github.io/valdeirlinkedin" },
-      { nome: "Franciele Neri", cargo: "Técnica em Segurança do Trabalho Sênior", score: 35, verificado: false, recente: true, dataRelatorio: "08/06/2026", avatar: "https://drive.google.com/thumbnail?id=1MzS3wR4nvlmWCClfP3C9tnsoKcnr49VD&sz=w800", url: "https://hidrogest.github.io/francielelinkedin" },
+      { nome: "Franciele Neri", cargo: "Técnica em Segurança do Trabalho Sênior", score: 35, verificado: false, ex_colaborador: true, recente: true, dataRelatorio: "08/06/2026", avatar: "https://drive.google.com/thumbnail?id=1MzS3wR4nvlmWCClfP3C9tnsoKcnr49VD&sz=w800", url: "https://hidrogest.github.io/francielelinkedin" },
       { nome: "Miqueias Palmeira de Souza Santos", cargo: "Auxiliar de Hidrometrista", score: 49, verificado: false, recente: true, dataRelatorio: "08/06/2026", avatar: "https://ui-avatars.com/api/?name=Miqueias+Palmeira&size=400&background=e2e8f0&color=64748b", url: "https://hidrogest.github.io/miqueiaslinkedin" },
-      { nome: "Elias Henrique Gomes dos Santos", cargo: "Auxiliar de Hidrometrista", score: 37, verificado: false, recente: true, dataRelatorio: "08/06/2026", avatar: "https://ui-avatars.com/api/?name=Elias+Henrique&size=400&background=e2e8f0&color=64748b", url: "https://hidrogest.github.io/eliaslinkedin" },
+      { nome: "Elias Henrique Gomes dos Santos", cargo: "Auxiliar de Hidrometrista", score: 37, verificado: false, ex_colaborador: true, recente: true, dataRelatorio: "08/06/2026", avatar: "https://ui-avatars.com/api/?name=Elias+Henrique&size=400&background=e2e8f0&color=64748b", url: "https://hidrogest.github.io/eliaslinkedin" },
+      { nome: "Antônio Augusto dos Santos", cargo: "Técnico Hidrometrista Pleno | Eng. Civil", score: 30, verificado: false, recente: true, dataRelatorio: "11/06/2026", avatar: "https://drive.google.com/thumbnail?id=1bEENmgAyL2WoptfIdPCv7SVNyYPKJQil&sz=w400", url: "https://hidrogest.github.io/antonioaugustolinkedin" },
       { nome: "Membro Pendente", cargo: "Trabalhando no perfil...", pendente: true }
     ];
 
@@ -414,7 +468,8 @@
       li: `<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.4 20.4h-3.5v-5.5c0-1.3 0-3-1.8-3s-2.1 1.4-2.1 2.9v5.6H9.3V9h3.4v1.5c.5-.9 1.6-1.8 3.3-1.8 3.6 0 4.2 2.3 4.2 5.4v6.3zM5.3 7.4c-1.1 0-2-.9-2-2 0-1.1.9-2 2-2s2 .9 2 2c0 1.1-.9 2-2 2zm1.7 13H3.5V9h3.5v11.4zM22.2 0H1.7C.7 0 0 .7 0 1.7v20.5C0 23.2.7 24 1.7 24h20.4c1 0 1.7-.7 1.7-1.7V1.7C24 .7 23.2 0 22.2 0z"/></svg>`,
       sparkle: `<svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3Z"/></svg>`,
       download: `<svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>`,
-      calendar: `<svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>`
+      calendar: `<svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>`,
+      block: `<svg class="shield-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>`
     };
 
     let search = '';
@@ -475,8 +530,19 @@
           </div>
         ` : '';
 
+        // Renderiza o escudo de bloqueio se a pessoa for Ex-colaborador
+        const exEmployeeOverlay = m.ex_colaborador ? `
+          <div class="ex-employee-shield">
+            ${SVG.block}
+            <div class="shield-title">Ex-colaborador</div>
+            <div class="shield-text">Esta pessoa não faz mais parte do quadro da empresa.</div>
+            <button class="shield-btn" onclick="this.parentElement.style.opacity='0'; setTimeout(()=>this.parentElement.style.display='none', 400);">Acessar assim mesmo</button>
+          </div>
+        ` : '';
+
         return `
           <div class="card" style="animation-delay:${i*60}ms">
+            ${exEmployeeOverlay}
             <div class="card-header">
               <div style="display:flex;gap:.5rem">${m.recente ? `<span class="recent-badge">${SVG.sparkle} Recente</span>` : ''}</div>
               <span class="li-icon">${SVG.li}</span>
